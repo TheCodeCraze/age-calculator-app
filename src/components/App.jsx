@@ -1,7 +1,11 @@
-import styles from "../styles/App.module.css";
+import Calculator from "./Calculator";
 
 const App = () => {
-  return <main className={styles.main}></main>;
+  return (
+    <main>
+      <Calculator />
+    </main>
+  );
 };
 
 export default App;

@@ -16,10 +16,6 @@
   --off-black: hsl(0, 0%, 8%);
 }
 
-html {
-  font-size: 32px;
-}
-
 html,
 body {
   width: 100%;
@@ -28,6 +24,7 @@ body {
 
 body {
   height: 960px;
+  background: var(--off-white);
   font-family: "Poppins", sans-serif;
   display: grid;
   place-items: center;
