@@ -9,7 +9,7 @@
 .inputs {
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 32px;
 }
 
@@ -56,6 +56,25 @@
 .input:hover,
 .input:focus {
   border-color: var(--purple);
+}
+
+.message {
+  display: none;
+}
+
+.error > .label {
+  color: var(--light-red);
+}
+
+.error > .input {
+  border-color: var(--light-red);
+}
+
+.error > .message {
+  display: block;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--light-red);
 }
 
 .seperator {
