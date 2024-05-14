@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "../styles/Calculator.module.css";
 import { useFormik } from "formik";
 import { ageSchema } from "../schema/ageSchema";
+import { getCurrentDate, getDays } from "../utils/date";
 
 const Calculator = () => {
   const [result, setResult] = useState({
@@ -9,7 +10,26 @@ const Calculator = () => {
     months: "- -",
     days: "- -",
   });
-  const handleSubmit = (values) => {};
+  const handleSubmit = (values) => {
+    const { day, month, year } = values;
+    const { currentDay, currentMonth, currentYear } = getCurrentDate();
+    const daysInMonth = getDays(year, month);
+    const remainingDays =
+      currentDay >= day ? currentDay - day : daysInMonth - day + currentDay;
+    const remainingMonths =
+      currentMonth >= month
+        ? currentDay >= day
+          ? currentMonth - month
+          : currentMonth - month - 1
+        : 12 - month + currentMonth - 1;
+    const remainingYears =
+      currentMonth >= month ? currentYear - year : currentYear - year - 1;
+    setResult({
+      years: remainingYears,
+      months: remainingMonths,
+      days: remainingDays,
+    });
+  };
   const formik = useFormik({
     initialValues: {
       day: "",

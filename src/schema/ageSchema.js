@@ -1,13 +1,7 @@
 import * as Yup from "yup";
+import { getCurrentDate, getDays } from "../utils/date";
 
-const now = new Date();
-const currentDay = now.getDate();
-const currentMonth = now.getMonth() + 1;
-const currentYear = now.getFullYear();
-
-const getDays = (year, month) => {
-  return new Date(year, month, 0).getDate();
-};
+const { currentDay, currentMonth, currentYear } = getCurrentDate();
 
 export const ageSchema = Yup.object().shape({
   day: Yup.number()
@@ -57,5 +51,6 @@ export const ageSchema = Yup.object().shape({
       "Must be in the past",
       "Must be in the past",
       (year) => year <= currentYear
-    ),
+    )
+    .test("Must be a valid year", "Must be a valid year", (year) => year >= 1),
 });
