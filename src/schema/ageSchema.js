@@ -5,6 +5,10 @@ const currentDay = now.getDate();
 const currentMonth = now.getMonth() + 1;
 const currentYear = now.getFullYear();
 
+const getDays = (year, month) => {
+  return new Date(year, month, 0).getDate();
+};
+
 export const ageSchema = Yup.object().shape({
   day: Yup.number()
     .required("This field is required")
@@ -14,10 +18,11 @@ export const ageSchema = Yup.object().shape({
         if (!month || !year) {
           return true;
         } else {
+          const daysInMonth = getDays(year, month);
           if (year === currentYear && month === currentMonth) {
             return day <= currentDay;
           } else {
-            return true;
+            return day <= daysInMonth;
           }
         }
       } else {
