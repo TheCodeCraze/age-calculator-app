@@ -14,18 +14,8 @@ export const ageSchema = Yup.object().shape({
         if (!month || !year) {
           return true;
         } else {
-          if (
-            year === currentYear &&
-            month === currentMonth &&
-            day <= currentDay
-          ) {
-            return true;
-          } else if (
-            year === currentYear &&
-            month === currentMonth &&
-            day > currentDay
-          ) {
-            return false;
+          if (year === currentYear && month === currentMonth) {
+            return day <= currentDay;
           } else {
             return true;
           }
@@ -45,10 +35,8 @@ export const ageSchema = Yup.object().shape({
           if (!year) {
             return true;
           } else {
-            if (year === currentYear && month <= currentMonth) {
-              return true;
-            } else if (year === currentYear && month > currentMonth) {
-              return false;
+            if (year === currentYear) {
+              return month <= currentMonth;
             } else {
               return true;
             }
