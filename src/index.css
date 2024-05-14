@@ -29,3 +29,12 @@ body {
   display: grid;
   place-items: center;
 }
+
+@media screen and (max-width: 530px) {
+  body {
+    height: 812px;
+    display: flex;
+    align-items: unset;
+    justify-content: center;
+  }
+}
